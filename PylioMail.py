@@ -18,9 +18,9 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import mimetypes
 import os
+import sys
 import argparse
 from apiclient import errors
-
 
 class PylioMail:
     SCOPES = 'https://www.googleapis.com/auth/gmail.send'
@@ -90,8 +90,13 @@ class PylioMail:
         store = file.Storage('token.json')
         creds = store.get()
         if not creds or creds.invalid:
-            flow = client.flow_from_clientsecrets(self.credFile, SCOPES)
-            creds = tools.run_flow(flow, store)
+            parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter, parents=[tools.argparser])
+            flags = parser.parse_args()
+            flags.noauth_local_webserver = True
+            #print("ARGV: ", sys.argv)
+            #print("FLAGS: ", flags)
+            flow = client.flow_from_clientsecrets(self.credFile, self.SCOPES)
+            creds = tools.run_flow(flow, store, flags)
 
         service = build('gmail', 'v1', http=creds.authorize(Http()))
         email = self._CreateMsg(self.sender, self.to, self.subject, self.message)

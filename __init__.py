@@ -7,6 +7,7 @@
 # purpose: Send email on Linux command line.
 #################################################
 
+import sys
 import argparse
 import yaml
 import PylioMail
@@ -19,7 +20,7 @@ def main():
     argParser.add_argument('-s', '--subject', action='store', metavar='subject_line', help='subject line of email')
     argParser.add_argument('-m', '--message', action='store', metavar='msg_body', help='text body of email')
     argParser.add_argument('-c', '--config-file',  action='store', default='config.yaml', metavar='path', help='path to custom configuration file')
-    argParser.add_argument('-g', '--cred-file',  action='store', default='credentials.json', metavar='path', help='path to Google Gmail credentials JSON file')
+    argParser.add_argument('-g', '--cred-file',  action='store', metavar='path', help='path to Google Gmail credentials JSON file')
     argParser.add_argument('-e', '--sender',  action='store', metavar='name', help='Google required argument; default is \'me\'')
     lineArgs = argParser.parse_args()
 
@@ -35,8 +36,8 @@ def main():
     subject = lineArgs.subject if lineArgs.subject != None else thisConfig['subject']
     message = lineArgs.message if lineArgs.message != None else thisConfig['message']
 
-    credPath = lineArgs.cred_file if lineArgs != None else thisConfig['credentials']
-
+    credPath = lineArgs.cred_file if lineArgs.cred_file != None else thisConfig['credentials']
+#    print(sys.argv)
     myMsg = PylioMail.PylioMail(to, message, credPath, subject)
     myMsg.send()
 
