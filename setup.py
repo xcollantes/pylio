@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="pyliomailer",
+    name="pylio",
     version="0.0.1",
     author="Xavier Collantes",
     author_email="xcollantes@zagmail.gonzaga.edu",

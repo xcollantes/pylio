@@ -1,9 +1,9 @@
 ---
 # PylioMail settings
 sender: me
-credentials: ../mailer-cred/credentials.json
-send_to: xcollantes@zagmail.gonzaga.edu
-subject: TEST Token
+credentials: credentials.json
+send_to: 
+subject: 
 message: Hello World!!!1 Go Zags
 
 
