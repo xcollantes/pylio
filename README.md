@@ -32,5 +32,7 @@ This repository is a wrapper that simplifies the use of the [Google Gmail API](g
 - Check if authorization is enabled: [Google Authorization](https://developers.google.com/gmail/api/auth/about-auth)
 - Make sure `https://www.googleapis.com/auth/gmail.send` is chosen in [authorization](https://developers.google.com/gmail/api/auth/web-server).
 
+2018 (c) Xavier Collantes
+
 [gmailAPI]:("https://developers.google.com/gmail/api/")
 [gmailAPIon]:("https://developers.google.com/gmail/api/quickstart/python")
