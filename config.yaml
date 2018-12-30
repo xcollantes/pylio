@@ -1,7 +1,7 @@
 ---
 # PylioMail settings
 sender: me
-credentials: credentials.json
+credentials: ../../mailer-cred/credentials.json
 send_to: 
 subject: 
 message: Hello World!!!1 Go Zags
